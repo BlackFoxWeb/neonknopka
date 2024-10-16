@@ -1,0 +1,78 @@
+:root {
+    --neon-color: #00ff99;
+    --neon-glow-color: rgba(0, 255, 153, 0.75);
+    --neon-shadow-color: rgba(0, 255, 153, 0.5);
+    --text-color: #fff;
+    --font-family: Arial, sans-serif;
+    --transition-speed: 0.5s;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+    font-family: var(--font-family);
+}
+
+.neon-box {
+    font-size: 36px;
+    padding: 20px;
+    color: var(--text-color);
+    border: 2px solid var(--neon-color);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease-in-out;
+    box-shadow: 0 0 10px var(--neon-shadow-color); 
+}
+
+.neon-box:before,
+.neon-box:after {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+    background-color: var(--neon-glow-color);
+    opacity: 0;
+    transition: opacity var(--transition-speed);
+    z-index: -1;
+    filter: blur(25px); 
+}
+
+.neon-box:hover {
+    color: rgba(255, 255, 255, 0); 
+    box-shadow: 0 0 20px var(--neon-glow-color), 0 0 40px var(--neon-color),
+                0 0 60px var(--neon-color), 0 0 80px var(--neon-color); 
+}
+
+.neon-box:hover:before {
+    opacity: 1; 
+}
+
+.neon-box:after {
+    background-color: var(--neon-shadow-color);
+    filter: blur(40px);
+}
+
+.neon-box:hover:after {
+    opacity: 1;
+    background-color: var(--neon-color);
+    filter: blur(50px);
+}
+
+.neon-box span {
+    display: inline-block;
+    transition: opacity var(--transition-speed);
+}
+
+.neon-box:hover span {
+    opacity: 0; 
+}
